@@ -32,8 +32,8 @@ const Locations = () => {
             <p className="mt-2 text-sm text-gray-500">More search options available after search.</p>
           </div>
 
-          <div className="w-full h-96 bg-gray-200 rounded-lg overflow-hidden">
-            <img src="/Locations.png" alt="Bank Locations" className="w-full h-full object-cover" />
+          <div className="w-full bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+            <img src="/Locations.png" alt="Bank Locations" className="w-full h-auto object-cover" />
           </div>
         </div>
       </section>

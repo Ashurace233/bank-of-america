@@ -21,7 +21,7 @@ const Personal = () => {
                 </Button>
               </Link>
             </div>
-            <div className="rounded-lg h-64 overflow-hidden">
+            <div className="rounded-lg overflow-hidden shadow-lg">
               <img src="/personal.png" alt="Banking Experience" className="w-full h-full object-cover" />
             </div>
           </div>
@@ -129,8 +129,8 @@ const Personal = () => {
                 </Button>
               </div>
             </div>
-            <div className="rounded-lg h-80 overflow-hidden">
-              <img src="/personal2.png" alt="Mobile Banking Experience" className="w-full h-full object-cover" />
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img src="/personal2.png" alt="Mobile Banking Experience" className="w-full h-auto object-cover" />
             </div>
           </div>
         </div>

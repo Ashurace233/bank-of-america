@@ -11,8 +11,8 @@ const BusinessesInstitutions = () => {
       </section>
       <section className="py-12 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="w-full h-64 bg-gray-200 rounded-lg mb-8 overflow-hidden">
-            <img src="/Businesses & Institutions.png" alt="Businesses & Institutions" className="w-full h-full object-cover" />
+          <div className="w-full bg-gray-200 rounded-lg mb-8 overflow-hidden shadow-lg">
+            <img src="/Businesses & Institutions.png" alt="Businesses & Institutions" className="w-full h-auto object-cover" />
           </div>
           <p className="text-gray-600">Corporate banking services...</p>
         </div>

@@ -34,8 +34,8 @@ const ContactUs = () => {
         <div className="max-w-7xl mx-auto">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
           <p className="text-xl text-gray-600">We're here to help</p>
-          <div className="w-full h-64 bg-gray-200 rounded-lg mt-8 overflow-hidden">
-            <img src="/Contact Us.png" alt="Contact Us" className="w-full h-full object-cover" />
+          <div className="w-full bg-gray-200 rounded-lg mt-8 overflow-hidden shadow-lg">
+            <img src="/Contact Us.png" alt="Contact Us" className="w-full h-auto object-cover" />
           </div>
         </div>
       </section>
