@@ -36,26 +36,31 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
       {/* Top header - white, Bank of America style */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          {/* Top row: Menu, Inbox, Products, Log Out, Logo */}
-          <div className="flex items-center justify-between py-3">
+          {/* Top row: Logo (left) | Inbox, Products, Profile, Log Out (right) */}
+          <div className="flex items-center justify-between py-3 gap-4">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837] md:hidden"
+              className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837] md:hidden flex-shrink-0"
             >
               <Menu className="h-6 w-6" />
               <span className="text-[10px]">Menu</span>
             </button>
-            <div className="hidden md:flex items-center gap-6">
-              <Link to="/inbox" className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837]">
+            {/* Logo - top left (traditional placement). To increase size change className e.g. h-10 or h-12 */}
+            <Link to="/dashboard" className="flex-shrink-0" style={{ background: "transparent" }}>
+              <SiteLogo className="h-9 object-contain" />
+            </Link>
+            <div className="hidden md:flex items-center gap-6 ml-auto">
+              <Link to="/inbox" className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837] relative py-1 pr-1">
                 <span className="text-xl">✉</span>
                 <span className="text-xs">Inbox</span>
+                <span className="absolute top-0 right-0 bg-[#E31837] text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center min-w-[1rem] leading-none">3</span>
               </Link>
               <Link to="/products" className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837]">
                 <span className="text-xl">🛒</span>
                 <span className="text-xs">Products</span>
               </Link>
               <Link to="/profile" className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837]">
-                <span className="text-xs font-medium">Profile</span>
+                <span className="text-sm font-medium">Profile</span>
               </Link>
               <button
                 onClick={handleLogout}
@@ -64,14 +69,6 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
                 <LogOut className="h-5 w-5" />
                 <span className="text-xs">Log Out</span>
               </button>
-            </div>
-            <div className="flex-1 flex justify-center md:justify-end">
-              <Link to="/dashboard" className="flex items-center gap-2 relative" style={{ background: "transparent" }}>
-                <SiteLogo className="h-8 object-contain" />
-                <span className="absolute -top-1 -right-1 bg-[#E31837] text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center min-w-[1rem]">
-                  3
-                </span>
-              </Link>
             </div>
           </div>
 

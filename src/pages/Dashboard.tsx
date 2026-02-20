@@ -1,5 +1,5 @@
 import DashboardLayout from "@/components/DashboardLayout";
-import { boaAccounts, accountData, transactions, formatCurrency } from "@/data/accountData";
+import { accountData, transactions, formatCurrency } from "@/data/accountData";
 import { useAuth } from "@/contexts/AuthContext";
 import {
   ArrowUpRight, ArrowDownLeft, ChevronRight, Send,
@@ -51,19 +51,22 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Bank of America accounts section - red banner + account cards */}
+        {/* Bank of America accounts section - single user's accounts only */}
         <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
           <div className="bg-[#E31837] px-4 sm:px-6 py-3">
             <h2 className="text-lg font-bold text-white">Bank of America</h2>
           </div>
           <div className="divide-y divide-gray-200">
-            {boaAccounts.map((account) => (
+            {[
+              { name: accountData.checking.name, number: accountData.checking.number, balance: accountData.checking.balance },
+              { name: accountData.savings.name, number: accountData.savings.number, balance: accountData.savings.balance },
+            ].map((account) => (
               <div
                 key={account.number}
                 className="flex items-center justify-between px-4 sm:px-6 py-4 hover:bg-gray-50 transition-colors"
               >
                 <div>
-                  <p className="text-sm font-medium text-gray-900">{account.name}</p>
+                  <p className="text-sm font-medium text-gray-900">{account.name} ****{account.number}</p>
                   <p className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">
                     {showBalances
                       ? formatCurrency(account.balance)
