@@ -90,61 +90,66 @@ const PublicLayout = ({ children, activeTab, showLogin = true }: PublicLayoutPro
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             {showLogin && (
-              <div className="flex-1 max-w-md">
-                <div className="bg-[#E31837] text-white rounded-lg p-5">
-                  <h2 className="text-lg font-bold mb-4">Enter your Online ID</h2>
-                  <form onSubmit={handleLogin} className="space-y-3">
-                    <Input
-                      type="text"
-                      placeholder="Online ID"
-                      value={onlineId}
-                      onChange={(e) => {
-                        setOnlineId(e.target.value);
-                        setError("");
-                      }}
-                      className="h-10 bg-white text-gray-900 border-0"
-                      disabled={isLoading}
-                    />
-                    <div className="flex items-center gap-2">
-                      <Checkbox
-                        id="saveId"
-                        checked={saveId}
-                        onCheckedChange={(c) => setSaveId(!!c)}
-                        className="border-white data-[state=checked]:bg-white data-[state=checked]:text-[#E31837]"
+              <div className="flex flex-col lg:flex-row gap-6 flex-1">
+                <div className="flex-1 max-w-md">
+                  <div className="bg-[#E31837] text-white rounded-lg p-5">
+                    <h2 className="text-lg font-bold mb-4">Enter your Online ID</h2>
+                    <form onSubmit={handleLogin} className="space-y-3">
+                      <Input
+                        type="text"
+                        placeholder="Online ID"
+                        value={onlineId}
+                        onChange={(e) => {
+                          setOnlineId(e.target.value);
+                          setError("");
+                        }}
+                        className="h-10 bg-white text-gray-900 border-0"
+                        disabled={isLoading}
                       />
-                      <label htmlFor="saveId" className="text-sm text-white/90 cursor-pointer">Save this Online ID</label>
-                      <a href="#" className="text-sm text-white underline ml-auto">Help/options</a>
-                    </div>
-                    <Input
-                      type="password"
-                      placeholder="Passcode"
-                      value={passcode}
-                      onChange={(e) => {
-                        setPasscode(e.target.value);
-                        setError("");
-                      }}
-                      disabled={isLoading || onlineId.trim().length < 6}
-                      className={`h-10 bg-white text-gray-900 border-0 ${onlineId.trim().length < 6 ? "opacity-60" : ""}`}
-                    />
-                    {error && (
-                      <p className="text-sm text-white bg-white/20 rounded px-2 py-1">{error}</p>
-                    )}
-                    <Button
-                      type="submit"
-                      disabled={isLoading}
-                      className="w-full bg-[#012169] hover:bg-[#011a52] text-white font-semibold h-10 disabled:opacity-80"
-                    >
-                      {isLoading ? (
-                        <span className="flex items-center justify-center gap-2">
-                          <Loader2 className="h-4 w-4 animate-spin" />
-                          Signing in...
-                        </span>
-                      ) : (
-                        "Sign In"
+                      <div className="flex items-center gap-2">
+                        <Checkbox
+                          id="saveId"
+                          checked={saveId}
+                          onCheckedChange={(c) => setSaveId(!!c)}
+                          className="border-white data-[state=checked]:bg-white data-[state=checked]:text-[#E31837]"
+                        />
+                        <label htmlFor="saveId" className="text-sm text-white/90 cursor-pointer">Save this Online ID</label>
+                        <a href="#" className="text-sm text-white underline ml-auto">Help/options</a>
+                      </div>
+                      <Input
+                        type="password"
+                        placeholder="Passcode"
+                        value={passcode}
+                        onChange={(e) => {
+                          setPasscode(e.target.value);
+                          setError("");
+                        }}
+                        disabled={isLoading || onlineId.trim().length < 6}
+                        className={`h-10 bg-white text-gray-900 border-0 ${onlineId.trim().length < 6 ? "opacity-60" : ""}`}
+                      />
+                      {error && (
+                        <p className="text-sm text-white bg-white/20 rounded px-2 py-1">{error}</p>
                       )}
-                    </Button>
-                  </form>
-                  <Link to="/login" className="text-sm text-white underline mt-2 inline-block">Enroll</Link>
+                      <Button
+                        type="submit"
+                        disabled={isLoading}
+                        className="w-full bg-[#012169] hover:bg-[#011a52] text-white font-semibold h-10 disabled:opacity-80"
+                      >
+                        {isLoading ? (
+                          <span className="flex items-center justify-center gap-2">
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                            Signing in...
+                          </span>
+                        ) : (
+                          "Sign In"
+                        )}
+                      </Button>
+                    </form>
+                    <Link to="/login" className="text-sm text-white underline mt-2 inline-block">Enroll</Link>
+                  </div>
+                </div>
+                <div className="hidden lg:flex lg:flex-1 lg:max-w-xs">
+                  <img src="/yy.png" alt="Sign in" className="w-full h-auto object-cover rounded-lg" />
                 </div>
               </div>
             )}

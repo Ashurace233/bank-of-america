@@ -60,8 +60,8 @@ const Homepage = () => {
                 <Link to="/locations" className="text-[#012169] font-medium hover:underline">Schedule an appointment</Link>
               </div>
             </div>
-            <div className="w-full lg:w-96 h-48 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
-              [Video Placeholder - Insert Video Here]
+            <div className="w-full lg:w-96 bg-gray-200 rounded-lg overflow-hidden">
+              <img src="/hhh.png" alt="Open an account" className="w-full h-auto object-cover" />
             </div>
           </div>
         </div>

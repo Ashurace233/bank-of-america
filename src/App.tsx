@@ -41,7 +41,8 @@ const App = () => (
       <AuthProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<Personal />} />
+            <Route path="/homepage" element={<Homepage />} />
             <Route path="/personal" element={<Personal />} />
             <Route path="/login" element={<Login />} />
             <Route path="/banking" element={<Banking />} />
