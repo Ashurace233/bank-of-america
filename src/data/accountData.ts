@@ -19,7 +19,7 @@ export const accountData = {
     type: "savings" as const,
   },
   // Net worth summary amount shown on the dashboard (edit here)
-  totalBalance: 0,
+  totalBalance: 5,000,000,
 };
 
 // Dashboard summary amounts (edit these to change Credit Cards and Investments on the dashboard)
@@ -35,12 +35,12 @@ export const transactions = [
   { id: 4, date: "02/15/2026", description: "Transfer from Savings", amount: 5000.0, type: "credit" as const, category: "Transfer" },
   { id: 5, date: "02/14/2026", description: "Netflix Subscription", amount: -22.99, type: "debit" as const, category: "Entertainment" },
   { id: 6, date: "02/13/2026", description: "Shell Gas Station", amount: -65.40, type: "debit" as const, category: "Auto" },
-  { id: 7, date: "02/12/2026", description: "Wire Transfer Received", amount: 50000.0, type: "credit" as const, category: "Transfer" },
+  { id: 7, date: "02/12/2026", description: "Wire Transfer Received", amount: 50000000.0, type: "credit" as const, category: "Transfer" },
   { id: 8, date: "02/11/2026", description: "Electric Bill - ConEd", amount: -245.80, type: "debit" as const, category: "Utilities" },
   { id: 9, date: "02/10/2026", description: "Starbucks", amount: -8.75, type: "debit" as const, category: "Dining" },
-  { id: 10, date: "02/09/2026", description: "Investment Dividend", amount: 3200.0, type: "credit" as const, category: "Income" },
-  { id: 11, date: "02/08/2026", description: "AT&T Wireless", amount: -95.00, type: "debit" as const, category: "Utilities" },
-  { id: 12, date: "02/07/2026", description: "Uber Rides", amount: -42.30, type: "debit" as const, category: "Transportation" },
+  { id: 10, date: "01/09/2026", description: "Investment Dividend", amount: 3200.0, type: "credit" as const, category: "Income" },
+  { id: 11, date: "01/08/2026", description: "AT&T Wireless", amount: -95.00, type: "debit" as const, category: "Utilities" },
+  { id: 12, date: "01/07/2026", description: "Uber Rides", amount: -42.30, type: "debit" as const, category: "Transportation" },
 ];
 
 export const billPayees = [
