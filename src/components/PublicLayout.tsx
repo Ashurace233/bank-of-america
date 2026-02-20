@@ -54,11 +54,14 @@ const PublicLayout = ({ children, activeTab, showLogin = true }: PublicLayoutPro
         <span>Bank of America, N.A. Member FDIC. Equal Housing Lender.</span>
       </div>
 
-      {/* Top utility bar - gray */}
+      {/* Top utility bar - gray with logo at traditional top-left */}
       <div className="bg-gray-100 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2">
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center gap-6">
+              <Link to="/" className="flex items-center gap-2" style={{ background: "transparent" }}>
+                <SiteLogo className="h-8 object-contain" />
+              </Link>
               <Link to="/" className="text-[#012169] hover:underline font-medium">Personal</Link>
               <Link to="/small-business" className="text-[#012169] hover:underline font-medium">Small Business</Link>
               <Link to="/wealth-management" className="text-[#012169] hover:underline font-medium">Wealth Management</Link>
@@ -82,13 +85,10 @@ const PublicLayout = ({ children, activeTab, showLogin = true }: PublicLayoutPro
         </div>
       </div>
 
-      {/* Main header - Logo + Sign-in */}
+      {/* Main header - Sign-in */}
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-            <Link to="/" className="flex-shrink-0" style={{ background: "transparent" }}>
-              <SiteLogo className="h-10 object-contain" />
-            </Link>
             {showLogin && (
               <div className="flex-1 max-w-md">
                 <div className="bg-[#E31837] text-white rounded-lg p-5">

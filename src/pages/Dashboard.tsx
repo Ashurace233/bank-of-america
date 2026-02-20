@@ -1,9 +1,9 @@
 import DashboardLayout from "@/components/DashboardLayout";
-import { accountData, transactions, formatCurrency } from "@/data/accountData";
+import { accountData, dashboardSummary, transactions, formatCurrency } from "@/data/accountData";
 import { useAuth } from "@/contexts/AuthContext";
 import {
   ArrowUpRight, ArrowDownLeft, ChevronRight, Send,
-  DollarSign, TrendingUp, Eye, EyeOff
+  DollarSign, TrendingUp, Eye, EyeOff, CreditCard, PieChart
 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -24,8 +24,6 @@ const Dashboard = () => {
               Hello, {user?.name.split(" ")[0]}
             </h1>
             <p className="text-sm text-gray-500 mb-4">Preferred Rewards Gold Member</p>
-            {/* Optional: Add image placeholder here if needed */}
-            {/* <div className="w-full h-32 bg-gray-100 rounded mb-4 flex items-center justify-center text-gray-400 text-xs">[Life Plan Image]</div> */}
             <div className="space-y-2">
               <Link
                 to="/dashboard"
@@ -47,6 +45,54 @@ const Dashboard = () => {
                 <p className="font-semibold text-gray-900 text-sm">My Rewards</p>
                 <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-[#E31837]" />
               </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Net Worth / Summary card - shown first */}
+        <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+          <div className="border-t-2 border-[#E31837] p-4 sm:p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-900">Net Worth¹</p>
+                <p className="text-2xl font-bold text-gray-900 mt-1">
+                  {showBalances ? formatCurrency(accountData.totalBalance) : "••••••••"}
+                </p>
+              </div>
+              <button
+                onClick={() => setShowBalances(!showBalances)}
+                className="flex items-center gap-2 text-sm text-[#012169] hover:underline"
+              >
+                {showBalances ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                {showBalances ? "Hide" : "Show"}
+              </button>
+            </div>
+            <ChevronRight className="h-5 w-5 text-gray-400 mt-2" />
+          </div>
+        </div>
+
+        {/* Credit Cards & Investments summary - edit amounts in src/data/accountData.ts (dashboardSummary) */}
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 flex items-center gap-3">
+            <div className="h-10 w-10 rounded-full bg-[#E31837]/10 flex items-center justify-center">
+              <CreditCard className="h-5 w-5 text-[#E31837]" />
+            </div>
+            <div>
+              <p className="text-sm font-medium text-gray-900">Credit Cards</p>
+              <p className="text-xl font-bold text-gray-900">
+                {showBalances ? formatCurrency(dashboardSummary.creditCardsBalance) : "••••••••"}
+              </p>
+            </div>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 flex items-center gap-3">
+            <div className="h-10 w-10 rounded-full bg-[#012169]/10 flex items-center justify-center">
+              <PieChart className="h-5 w-5 text-[#012169]" />
+            </div>
+            <div>
+              <p className="text-sm font-medium text-gray-900">Investments</p>
+              <p className="text-xl font-bold text-gray-900">
+                {showBalances ? formatCurrency(dashboardSummary.investmentsBalance) : "••••••••"}
+              </p>
             </div>
           </div>
         </div>
@@ -81,28 +127,6 @@ const Dashboard = () => {
                 </Link>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Net Worth / Summary card - BoA Dashboard style */}
-        <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-          <div className="border-t-2 border-[#E31837] p-4 sm:p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-900">Net Worth¹</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">
-                  {showBalances ? formatCurrency(accountData.totalBalance) : "••••••••"}
-                </p>
-              </div>
-              <button
-                onClick={() => setShowBalances(!showBalances)}
-                className="flex items-center gap-2 text-sm text-[#012169] hover:underline"
-              >
-                {showBalances ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                {showBalances ? "Hide" : "Show"}
-              </button>
-            </div>
-            <ChevronRight className="h-5 w-5 text-gray-400 mt-2" />
           </div>
         </div>
 
