@@ -90,8 +90,8 @@ const PublicLayout = ({ children, activeTab, showLogin = true }: PublicLayoutPro
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             {showLogin && (
-              <div className="flex flex-col lg:flex-row gap-8 flex-1 items-stretch lg:items-center">
-                <div className="flex-1 max-w-md">
+              <div className="flex flex-col lg:flex-row gap-4 flex-1 items-stretch lg:items-center">
+                <div className="w-full lg:w-80">
                   <div className="bg-[#E31837] text-white rounded-lg p-5">
                     <h2 className="text-lg font-bold mb-4">Enter your Online ID</h2>
                     <form onSubmit={handleLogin} className="space-y-3">
@@ -148,10 +148,10 @@ const PublicLayout = ({ children, activeTab, showLogin = true }: PublicLayoutPro
                     <Link to="/login" className="text-sm text-white underline mt-2 inline-block">Enroll</Link>
                   </div>
                 </div>
-                <div className="flex-1 hidden lg:flex lg:max-w-lg">
+                <div className="hidden lg:flex flex-1 min-w-0">
                   <img src="/yy.png" alt="Sign in" className="w-full h-auto object-contain rounded-lg shadow-lg" />
                 </div>
-                <div className="block lg:hidden w-full sm:max-w-sm mx-auto">
+                <div className="block lg:hidden w-full">
                   <img src="/yy.png" alt="Sign in" className="w-full h-auto object-contain rounded-lg shadow-lg" />
                 </div>
               </div>

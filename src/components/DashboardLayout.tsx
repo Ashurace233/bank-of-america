@@ -72,7 +72,7 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
             </div>
           </div>
 
-          {/* Tabs: Accounts | Dashboard */}
+          {/* Tabs: Accounts */}
           <div className="flex border-b border-gray-200 -mb-px">
             <Link
               to="/dashboard"
@@ -83,16 +83,6 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
               }`}
             >
               Accounts
-            </Link>
-            <Link
-              to="/dashboard"
-              className={`px-6 py-3 text-sm font-semibold border-b-2 transition-colors ${
-                location.pathname === "/dashboard"
-                  ? "border-[#E31837] text-[#E31837]"
-                  : "border-transparent text-gray-500 hover:text-gray-700"
-              }`}
-            >
-              Dashboard
             </Link>
           </div>
 
