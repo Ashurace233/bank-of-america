@@ -7,9 +7,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
 import { Smartphone, CreditCard, Landmark, Send, Loader2 } from "lucide-react";
 
-/** Inside/horizontal logo for the site */
-const LOGO_URL = "/logo.png";
-const LOGIN_DELAY_MS = 1500;
+import { SiteLogo } from "@/components/SiteLogo";
+const LOGIN_DELAY_MS = 2000;
 
 const Login = () => {
   const [userId, setUserId] = useState("");
@@ -44,7 +43,7 @@ const Login = () => {
     setError("");
     const success = login(userId, password);
     if (success) {
-      await new Promise((resolve) => setTimeout(resolve, LOGIN_DELAY_MS));
+      await new Promise((resolve) => setTimeout(resolve, LOGIN_DELAY_MS)); // 2 second delay before redirect
       navigate("/dashboard");
     } else {
       setIsLoading(false);
@@ -59,8 +58,8 @@ const Login = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Link to="/" className="flex items-center gap-2 [&_img]:bg-transparent" style={{ background: "transparent" }}>
-                <img src={LOGO_URL} alt="Bank of America" className="h-8 object-contain logo-no-bg" />
+              <Link to="/" className="flex items-center gap-2" style={{ background: "transparent" }}>
+                <SiteLogo className="h-8 object-contain" />
               </Link>
             </div>
             <div className="flex items-center gap-4 text-sm">

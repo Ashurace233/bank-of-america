@@ -51,7 +51,7 @@ const Loans = () => {
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">{loan.title}</h2>
                 <p className="text-gray-600 mb-4">{loan.desc}</p>
-                <Link to={`/loans/${loan.title.toLowerCase().replace(/\s+/g, "-")}`} className="text-[#012169] font-medium hover:underline inline-flex items-center gap-2">
+                <Link to="/server-error" className="text-[#012169] font-medium hover:underline inline-flex items-center gap-2">
                   Learn more <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -65,7 +65,7 @@ const Loans = () => {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to apply?</h2>
           <p className="text-gray-600 mb-6">Get pre-qualified in minutes without impacting your credit score.</p>
-          <Link to="/loans/apply" className="bg-[#E31837] hover:bg-[#c4162f] text-white px-6 py-3 rounded font-semibold inline-block">
+          <Link to="/server-error" className="bg-[#E31837] hover:bg-[#c4162f] text-white px-6 py-3 rounded font-semibold inline-block">
             Get Started
           </Link>
         </div>

@@ -25,6 +25,10 @@ import About from "./pages/About";
 import SmallBusiness from "./pages/SmallBusiness";
 import WealthManagement from "./pages/WealthManagement";
 import BusinessesInstitutions from "./pages/BusinessesInstitutions";
+import ServerError from "./pages/ServerError";
+import Inbox from "./pages/Inbox";
+import Products from "./pages/Products";
+import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -50,8 +54,12 @@ const App = () => (
             <Route path="/small-business" element={<SmallBusiness />} />
             <Route path="/wealth-management" element={<WealthManagement />} />
             <Route path="/businesses-institutions" element={<BusinessesInstitutions />} />
+            <Route path="/server-error" element={<ServerError />} />
             {/* Logged-in routes */}
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/inbox" element={<Inbox />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/transfers" element={<Transfers />} />
             <Route path="/bill-pay" element={<BillPay />} />
             <Route path="/credit-cards" element={<CreditCards />} />

@@ -46,7 +46,7 @@ const CreditCardsPublic = () => {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{card.name}</h3>
                 <p className="text-gray-600 mb-4">{card.rewards}</p>
-                <Link to="/credit-cards-public/apply" className="text-[#012169] font-medium hover:underline inline-flex items-center gap-2">
+                <Link to="/server-error" className="text-[#012169] font-medium hover:underline inline-flex items-center gap-2">
                   Apply now <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -82,7 +82,7 @@ const CreditCardsPublic = () => {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Check for Personalized Offers</h2>
           <p className="text-gray-600 mb-6">See what credit card offers are available to you.</p>
-          <Link to="/credit-cards-public/check-offers" className="bg-[#E31837] hover:bg-[#c4162f] text-white px-6 py-3 rounded font-semibold inline-block">
+          <Link to="/server-error" className="bg-[#E31837] hover:bg-[#c4162f] text-white px-6 py-3 rounded font-semibold inline-block">
             Check Offers
           </Link>
         </div>

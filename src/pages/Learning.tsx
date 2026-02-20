@@ -51,7 +51,7 @@ const Learning = () => {
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">{topic.title}</h2>
                 <p className="text-gray-600 mb-4">{topic.desc}</p>
-                <Link to="/learning/topics" className="text-[#012169] font-medium hover:underline inline-flex items-center gap-2">
+                <Link to="/server-error" className="text-[#012169] font-medium hover:underline inline-flex items-center gap-2">
                   Explore <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>

@@ -7,8 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useAuth } from "@/contexts/AuthContext";
 import { Loader2 } from "lucide-react";
 
-/** Inside/horizontal logo for the site */
-const LOGO_URL = "/logo.png";
+import { SiteLogo } from "@/components/SiteLogo";
 
 interface PublicLayoutProps {
   children: ReactNode;
@@ -40,7 +39,7 @@ const PublicLayout = ({ children, activeTab, showLogin = true }: PublicLayoutPro
     setError("");
     const success = login(onlineId, passcode);
     if (success) {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       navigate("/dashboard");
     } else {
       setIsLoading(false);
@@ -88,7 +87,7 @@ const PublicLayout = ({ children, activeTab, showLogin = true }: PublicLayoutPro
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             <Link to="/" className="flex-shrink-0" style={{ background: "transparent" }}>
-              <img src={LOGO_URL} alt="Bank of America" className="h-10 object-contain logo-no-bg" />
+              <SiteLogo className="h-10 object-contain" />
             </Link>
             {showLogin && (
               <div className="flex-1 max-w-md">

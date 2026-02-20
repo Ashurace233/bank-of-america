@@ -51,7 +51,7 @@ const InvestmentsPublic = () => {
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">{option.title}</h2>
                 <p className="text-gray-600 mb-4">{option.desc}</p>
-                <Link to="/investments-public/learn-more" className="text-[#012169] font-medium hover:underline inline-flex items-center gap-2">
+                <Link to="/server-error" className="text-[#012169] font-medium hover:underline inline-flex items-center gap-2">
                   Learn more <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -65,7 +65,7 @@ const InvestmentsPublic = () => {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Start investing today</h2>
           <p className="text-gray-600 mb-6">Open an account and get started with as little as $0.</p>
-          <Link to="/investments-public/open-account" className="bg-[#E31837] hover:bg-[#c4162f] text-white px-6 py-3 rounded font-semibold inline-block">
+          <Link to="/server-error" className="bg-[#E31837] hover:bg-[#c4162f] text-white px-6 py-3 rounded font-semibold inline-block">
             Open an Account
           </Link>
         </div>

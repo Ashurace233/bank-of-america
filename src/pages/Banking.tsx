@@ -28,7 +28,7 @@ const Banking = () => {
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Checking Accounts</h2>
               <p className="text-gray-600 mb-4">Choose from a variety of checking accounts designed to fit your lifestyle.</p>
-              <Link to="/banking/checking" className="text-[#012169] font-medium hover:underline inline-flex items-center gap-2">
+              <Link to="/server-error" className="text-[#012169] font-medium hover:underline inline-flex items-center gap-2">
                 Learn more <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -38,7 +38,7 @@ const Banking = () => {
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Savings & CDs</h2>
               <p className="text-gray-600 mb-4">Grow your savings with competitive rates and flexible options.</p>
-              <Link to="/banking/savings" className="text-[#012169] font-medium hover:underline inline-flex items-center gap-2">
+              <Link to="/server-error" className="text-[#012169] font-medium hover:underline inline-flex items-center gap-2">
                 Learn more <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

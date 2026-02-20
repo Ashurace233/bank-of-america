@@ -7,8 +7,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-/** Inside/horizontal logo for the site */
-const LOGO_URL = "/logo.png";
+import { SiteLogo } from "@/components/SiteLogo";
 
 const navItems = [
   { label: "Accounts", icon: Home, path: "/dashboard" },
@@ -47,14 +46,17 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
               <span className="text-[10px]">Menu</span>
             </button>
             <div className="hidden md:flex items-center gap-6">
-              <div className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837] cursor-pointer">
+              <Link to="/inbox" className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837]">
                 <span className="text-xl">✉</span>
                 <span className="text-xs">Inbox</span>
-              </div>
-              <div className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837] cursor-pointer">
+              </Link>
+              <Link to="/products" className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837]">
                 <span className="text-xl">🛒</span>
                 <span className="text-xs">Products</span>
-              </div>
+              </Link>
+              <Link to="/profile" className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837]">
+                <span className="text-xs font-medium">Profile</span>
+              </Link>
               <button
                 onClick={handleLogout}
                 className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837]"
@@ -64,17 +66,11 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
               </button>
             </div>
             <div className="flex-1 flex justify-center md:justify-end">
-              <Link to="/dashboard" className="flex items-center gap-2" style={{ background: "transparent" }}>
-                <div className="relative">
-                  <img
-                    src={LOGO_URL}
-                    alt="Bank of America"
-                    className="h-8 object-contain logo-no-bg"
-                  />
-                  <span className="absolute -top-1 -right-1 bg-[#E31837] text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
-                    3
-                  </span>
-                </div>
+              <Link to="/dashboard" className="flex items-center gap-2 relative" style={{ background: "transparent" }}>
+                <SiteLogo className="h-8 object-contain" />
+                <span className="absolute -top-1 -right-1 bg-[#E31837] text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center min-w-[1rem]">
+                  3
+                </span>
               </Link>
             </div>
           </div>
@@ -122,6 +118,15 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
         {/* Mobile menu */}
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-gray-200 bg-white py-2 animate-fade-in">
+            <Link to="/inbox" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-6 py-3 text-sm text-gray-700">
+              ✉ Inbox
+            </Link>
+            <Link to="/products" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-6 py-3 text-sm text-gray-700">
+              🛒 Products
+            </Link>
+            <Link to="/profile" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-6 py-3 text-sm text-gray-700">
+              Profile
+            </Link>
             {navItems.map(({ label, icon: Icon, path }) => (
               <Link
                 key={path}
