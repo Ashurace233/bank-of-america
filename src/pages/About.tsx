@@ -21,8 +21,8 @@ const About = () => {
           <p className="text-xl text-gray-600 mb-8">
             We serve individuals, small businesses, and large corporations with banking, investing, and financial solutions.
           </p>
-          <div className="w-full h-64 bg-gray-200 rounded-lg mb-8 flex items-center justify-center text-gray-500">
-            [Insert About Us Hero Image Here]
+          <div className="w-full h-64 bg-gray-200 rounded-lg mb-8 overflow-hidden">
+            <img src="/About Us.png" alt="About Bank of America" className="w-full h-full object-cover" />
           </div>
         </div>
       </section>

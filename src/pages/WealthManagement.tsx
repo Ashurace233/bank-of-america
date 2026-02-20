@@ -11,8 +11,8 @@ const WealthManagement = () => {
           <p className="text-xl text-gray-600 mb-8">
             Comprehensive wealth management and investment services through Merrill. Planning, investing, and advice for individuals and families.
           </p>
-          <div className="w-full h-64 bg-gray-200 rounded-lg mb-8 flex items-center justify-center text-gray-500">
-            [Wealth Management Hero Image]
+          <div className="w-full h-64 bg-gray-200 rounded-lg mb-8 overflow-hidden">
+            <img src="/wealth management.png" alt="Wealth Management" className="w-full h-full object-cover" />
           </div>
         </div>
       </section>

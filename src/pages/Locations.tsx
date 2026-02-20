@@ -31,15 +31,15 @@ const Locations = () => {
             </div>
             <p className="mt-2 text-sm text-gray-500">More search options available after search.</p>
           </div>
+
+          <div className="w-full h-96 bg-gray-200 rounded-lg overflow-hidden">
+            <img src="/Locations.png" alt="Bank Locations" className="w-full h-full object-cover" />
+          </div>
         </div>
       </section>
 
       <section className="py-12 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 mb-8">
-            [Insert Map Here – Replace with your map widget or image]
-          </div>
-
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Financial Centers & ATMs</h2>
           <p className="text-gray-600 mb-6">
             Bank of America has thousands of financial centers and ATMs nationwide. Use the search above to find locations near you. Many locations offer extended hours and weekend availability.

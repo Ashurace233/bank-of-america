@@ -11,8 +11,8 @@ const SmallBusiness = () => {
           <p className="text-xl text-gray-600 mb-8">
             Banking solutions designed for small businesses. Checking, credit cards, lending, and merchant services.
           </p>
-          <div className="w-full h-64 bg-gray-200 rounded-lg mb-8 flex items-center justify-center text-gray-500">
-            [Small Business Hero Image]
+          <div className="w-full h-64 bg-gray-200 rounded-lg mb-8 overflow-hidden">
+            <img src="/small business.png" alt="Small Business Banking" className="w-full h-full object-cover" />
           </div>
         </div>
       </section>

@@ -21,11 +21,8 @@ const Personal = () => {
                 </Button>
               </Link>
             </div>
-            <div className="bg-white bg-opacity-10 rounded-lg h-64 flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-6xl mb-4">💳</div>
-                <p className="text-blue-100">Banking Experience</p>
-              </div>
+            <div className="rounded-lg h-64 overflow-hidden">
+              <img src="/personal.png" alt="Banking Experience" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -132,11 +129,8 @@ const Personal = () => {
                 </Button>
               </div>
             </div>
-            <div className="bg-gray-100 rounded-lg h-80 flex items-center justify-center">
-              <div className="text-center">
-                <Smartphone className="h-32 w-32 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-500">Mobile Banking Experience</p>
-              </div>
+            <div className="rounded-lg h-80 overflow-hidden">
+              <img src="/personal2.png" alt="Mobile Banking Experience" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
