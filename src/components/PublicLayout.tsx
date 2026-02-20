@@ -62,7 +62,7 @@ const PublicLayout = ({ children, activeTab, showLogin = true }: PublicLayoutPro
               <Link to="/" className="flex items-center gap-2" style={{ background: "transparent" }}>
                 <SiteLogo className="h-8 object-contain" />
               </Link>
-              <Link to="/" className="text-[#012169] hover:underline font-medium">Personal</Link>
+              <Link to="/personal" className="text-[#012169] hover:underline font-medium">Personal</Link>
               <Link to="/small-business" className="text-[#012169] hover:underline font-medium">Small Business</Link>
               <Link to="/wealth-management" className="text-[#012169] hover:underline font-medium">Wealth Management</Link>
               <Link to="/businesses-institutions" className="text-[#012169] hover:underline font-medium">Businesses & Institutions</Link>

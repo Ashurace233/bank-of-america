@@ -4,10 +4,20 @@ import { Globe, Heart, Award, Users } from "lucide-react";
 
 const About = () => {
   return (
-    <PublicLayout>
+    <PublicLayout showLogin={false}>
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-[#012169] to-[#003DA5] text-white py-16 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-4">About Bank of America</h1>
+          <p className="text-xl text-blue-100 mb-8 max-w-2xl">
+            At Bank of America, we're committed to helping make financial lives better through the power of every connection. Learn how we're empowering our clients, employees, and communities.
+          </p>
+        </div>
+      </section>
+
+      {/* Main Content */}
       <section className="bg-gray-50 py-12 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">About Bank of America</h1>
           <p className="text-xl text-gray-600 mb-8">
             We serve individuals, small businesses, and large corporations with banking, investing, and financial solutions.
           </p>
@@ -51,7 +61,47 @@ const About = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
+      {/* Blue Background Commitment Section */}
+      <section className="bg-gradient-to-r from-[#012169] to-[#003DA5] text-white py-16 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6">Our Commitment to You</h2>
+          <p className="text-lg text-blue-100 mb-8">
+            At Bank of America, we're committed to helping make financial lives better through the power of every connection. Learn how we're empowering our clients, employees, and communities to achieve new possibilities.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold mb-3">Financial Empowerment</h3>
+              <p className="text-blue-100">
+                We provide tools, resources, and expert guidance to help our clients make informed financial decisions and achieve their goals.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-3">Community Impact</h3>
+              <p className="text-blue-100">
+                Through our Community Reinvestment Act programs, we invest in housing, small business, and community development initiatives.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-3">Sustainable Growth</h3>
+              <p className="text-blue-100">
+                We're committed to responsible growth that creates long-term value for shareholders while managing environmental and social risks.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-3">Diversity & Inclusion</h3>
+              <p className="text-blue-100">
+                We foster a culture where diverse perspectives are valued and every employee can bring their authentic selves to work.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
           <div className="border-t border-gray-200 pt-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact & Resources</h2>
             <p className="text-gray-600 mb-4">

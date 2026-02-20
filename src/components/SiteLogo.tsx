@@ -26,6 +26,7 @@ export const SiteLogo = ({ className = "h-8 object-contain", alt = "Bank of Amer
       src={LOGO_URL}
       alt={alt}
       className={className}
+      style={{ backgroundColor: "transparent" }}
       onError={(e) => {
         const el = e.target as HTMLImageElement;
         if (!el.src.endsWith("boa-logo.svg")) {
