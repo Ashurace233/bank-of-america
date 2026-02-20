@@ -9,6 +9,7 @@ import { Smartphone, CreditCard, Landmark, Send, Loader2 } from "lucide-react";
 
 /** Inside/horizontal logo for the site */
 const LOGO_URL = "/logo.png";
+const LOGIN_DELAY_MS = 1500;
 
 const Login = () => {
   const [userId, setUserId] = useState("");
@@ -43,7 +44,7 @@ const Login = () => {
     setError("");
     const success = login(userId, password);
     if (success) {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, LOGIN_DELAY_MS));
       navigate("/dashboard");
     } else {
       setIsLoading(false);
@@ -58,8 +59,8 @@ const Login = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Link to="/" className="flex items-center gap-2">
-                <img src={LOGO_URL} alt="Bank of America" className="h-8 object-contain" />
+              <Link to="/" className="flex items-center gap-2 [&_img]:bg-transparent" style={{ background: "transparent" }}>
+                <img src={LOGO_URL} alt="Bank of America" className="h-8 object-contain logo-no-bg" />
               </Link>
             </div>
             <div className="flex items-center gap-4 text-sm">
@@ -100,8 +101,7 @@ const Login = () => {
                       setUserId(e.target.value);
                       setError("");
                     }}
-                    disabled={isLoading}
-                    className="w-full h-10 bg-white text-gray-900 border-0 disabled:opacity-70"
+                    className="w-full h-10 bg-white text-gray-900 border-0"
                     placeholder=""
                     autoFocus
                   />
@@ -136,8 +136,8 @@ const Login = () => {
                       setPassword(e.target.value);
                       setError("");
                     }}
-                    disabled={!canEnablePassword || isLoading}
-                    className={`w-full h-10 bg-white text-gray-900 border-0 ${!canEnablePassword || isLoading ? "opacity-60 cursor-not-allowed" : ""}`}
+                    disabled={!canEnablePassword}
+                    className={`w-full h-10 bg-white text-gray-900 border-0 ${!canEnablePassword ? "opacity-60 cursor-not-allowed" : ""}`}
                     placeholder={!canEnablePassword ? "Enter at least 6 characters of Online ID first" : ""}
                   />
                 </div>
@@ -147,13 +147,13 @@ const Login = () => {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-[#012169] hover:bg-[#011a52] text-white font-semibold h-10 disabled:opacity-80 disabled:cursor-not-allowed"
+                  className="w-full bg-[#012169] hover:bg-[#011a52] text-white font-semibold h-10 disabled:opacity-80"
                 >
                   {isLoading ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    <span className="flex items-center justify-center gap-2">
+                      <Loader2 className="h-4 w-4 animate-spin" />
                       Signing in...
-                    </>
+                    </span>
                   ) : (
                     "Sign In"
                   )}

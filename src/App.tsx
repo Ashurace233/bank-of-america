@@ -13,6 +13,18 @@ import CreditCards from "./pages/CreditCards";
 import Investments from "./pages/Investments";
 import SettingsPage from "./pages/Settings";
 import NotFound from "./pages/NotFound";
+import Banking from "./pages/Banking";
+import CreditCardsPublic from "./pages/CreditCardsPublic";
+import Loans from "./pages/Loans";
+import InvestmentsPublic from "./pages/InvestmentsPublic";
+import Learning from "./pages/Learning";
+import ContactUs from "./pages/ContactUs";
+import Locations from "./pages/Locations";
+import Help from "./pages/Help";
+import About from "./pages/About";
+import SmallBusiness from "./pages/SmallBusiness";
+import WealthManagement from "./pages/WealthManagement";
+import BusinessesInstitutions from "./pages/BusinessesInstitutions";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +38,19 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/banking" element={<Banking />} />
+            <Route path="/credit-cards-public" element={<CreditCardsPublic />} />
+            <Route path="/loans" element={<Loans />} />
+            <Route path="/investments-public" element={<InvestmentsPublic />} />
+            <Route path="/learning" element={<Learning />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/locations" element={<Locations />} />
+            <Route path="/help" element={<Help />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/small-business" element={<SmallBusiness />} />
+            <Route path="/wealth-management" element={<WealthManagement />} />
+            <Route path="/businesses-institutions" element={<BusinessesInstitutions />} />
+            {/* Logged-in routes */}
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/transfers" element={<Transfers />} />
             <Route path="/bill-pay" element={<BillPay />} />

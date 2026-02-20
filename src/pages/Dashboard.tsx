@@ -24,6 +24,8 @@ const Dashboard = () => {
               Hello, {user?.name.split(" ")[0]}
             </h1>
             <p className="text-sm text-gray-500 mb-4">Preferred Rewards Gold Member</p>
+            {/* Optional: Add image placeholder here if needed */}
+            {/* <div className="w-full h-32 bg-gray-100 rounded mb-4 flex items-center justify-center text-gray-400 text-xs">[Life Plan Image]</div> */}
             <div className="space-y-2">
               <Link
                 to="/dashboard"

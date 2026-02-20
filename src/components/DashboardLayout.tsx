@@ -64,12 +64,12 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
               </button>
             </div>
             <div className="flex-1 flex justify-center md:justify-end">
-              <Link to="/dashboard" className="flex items-center gap-2">
+              <Link to="/dashboard" className="flex items-center gap-2" style={{ background: "transparent" }}>
                 <div className="relative">
                   <img
                     src={LOGO_URL}
                     alt="Bank of America"
-                    className="h-8 object-contain"
+                    className="h-8 object-contain logo-no-bg"
                   />
                   <span className="absolute -top-1 -right-1 bg-[#E31837] text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
                     3
