@@ -14,8 +14,8 @@ export const accountData = {
   savings: {
     name: "Savings Account",
     number: "7297",
-    balance: 0,
-    available: 0,
+    balance: 5,000,000,
+    available: 5,000,000,
     type: "savings" as const,
   },
   // Net worth summary amount shown on the dashboard (edit here)
