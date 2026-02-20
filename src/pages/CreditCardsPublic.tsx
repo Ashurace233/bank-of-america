@@ -27,7 +27,7 @@ const CreditCardsPublic = () => {
               {
                 name: "BankAmericard Cash Rewards™",
                 rewards: "1% cash back everywhere, 2% at grocery, 3% on gas",
-                image: "[Cash Rewards Card Image]",
+                image: "/yyh.png",
               },
               {
                 name: "Bank of America® Travel Rewards",
@@ -41,8 +41,12 @@ const CreditCardsPublic = () => {
               },
             ].map((card) => (
               <div key={card.name} className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-                <div className="w-full h-48 bg-gray-100 rounded-lg mb-4 flex items-center justify-center text-gray-400 text-sm">
-                  {card.image}
+                <div className="w-full h-48 bg-gray-100 rounded-lg mb-4 flex items-center justify-center text-gray-400 text-sm overflow-hidden">
+                  {card.image.startsWith("/") ? (
+                    <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
+                  ) : (
+                    card.image
+                  )}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{card.name}</h3>
                 <p className="text-gray-600 mb-4">{card.rewards}</p>

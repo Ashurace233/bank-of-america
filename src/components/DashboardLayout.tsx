@@ -19,16 +19,16 @@ const navItems = [
 ];
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
-  const { user, logout, isAuthenticated } = useAuth();
+  const { user, logout, isAuthenticated, isLoggingOut } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   if (!isAuthenticated) return <Navigate to="/login" replace />;
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
+  const handleLogout = async () => {
+    await logout();
+    navigate("/");
   };
 
   return (
@@ -209,6 +209,17 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
           <span>© 2026 Bank of America Corporation. Member FDIC. Equal Housing Lender.</span>
         </div>
       </footer>
+
+      {/* Logout Loading Modal */}
+      {isLoggingOut && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-8 text-center max-w-sm w-full mx-4">
+            <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#E31837] border-transparent border-t-[#E31837] mx-auto mb-4"></div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Logging out</h3>
+            <p className="text-gray-600">Please wait...</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
