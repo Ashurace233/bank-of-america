@@ -7,19 +7,19 @@ export const accountData = {
     // Last 4 digits of the account number
     number: "7284",
     // Current balance (edit this to change what shows on login)
-    balance: 0,
-    available: 0,
+    balance: 2500000,
+    available: 2500000,
     type: "checking" as const,
   },
   savings: {
     name: "Savings Account",
     number: "7297",
-    balance: 0,
-    available: 0,
+    balance: 2500000,
+    available: 2500000,
     type: "savings" as const,
   },
   // Net worth summary amount shown on the dashboard (edit here)
-  totalBalance: 0,
+  totalBalance: 5000000,
 };
 
 // Dashboard summary amounts (edit these to change Credit Cards and Investments on the dashboard)
