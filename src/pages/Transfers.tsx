@@ -25,26 +25,26 @@ const Transfers = () => {
     <DashboardLayout>
       <div className="max-w-2xl mx-auto space-y-6">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Transfer Money</h1>
-          <p className="text-sm text-gray-600">Move funds between your accounts</p>
+          <h1 className="text-2xl font-semibold text-foreground">Transfer Money</h1>
+          <p className="text-sm text-muted-foreground">Move funds between your accounts</p>
         </div>
 
         {success && (
-          <div className="flex items-center gap-3 bg-green-50 border border-green-200 text-green-700 rounded-lg p-4 animate-fade-in">
+          <div className="flex items-center gap-3 bg-success/10 border border-success/20 text-success rounded-lg p-4 animate-fade-in">
             <CheckCircle className="h-5 w-5" />
             <span className="text-sm font-medium">Transfer completed successfully!</span>
           </div>
         )}
 
-        <form onSubmit={handleTransfer} className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm space-y-5">
+        <form onSubmit={handleTransfer} className="bg-card border border-border rounded-xl p-6 shadow-card space-y-5">
           <div>
-            <label className="text-sm font-medium text-gray-900 block mb-1.5">From</label>
+            <label className="text-sm font-medium text-foreground block mb-1.5">From</label>
             <select
               value={fromAccount}
               onChange={(e) => setFromAccount(e.target.value)}
-              className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#E31837] focus:border-[#E31837]"
+              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground"
             >
-              <option value="checking">{accountData.checking.name} ({accountData.checking.number}) - {formatCurrency(accountData.checking.balance)}</option>
+              <option value="checking">{accountData.checking.name} ****{accountData.checking.number} - {formatCurrency(accountData.checking.balance)}</option>
               <option value="savings">{accountData.savings.name} ({accountData.savings.number}) - {formatCurrency(accountData.savings.balance)}</option>
             </select>
           </div>
@@ -53,35 +53,35 @@ const Transfers = () => {
             <button
               type="button"
               onClick={() => { setFromAccount(toAccount); setToAccount(fromAccount); }}
-              className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
+              className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center hover:bg-muted transition-colors"
             >
-              <ArrowLeftRight className="h-4 w-4 text-gray-700" />
+              <ArrowLeftRight className="h-4 w-4 text-foreground" />
             </button>
           </div>
 
           <div>
-            <label className="text-sm font-medium text-gray-900 block mb-1.5">To</label>
+            <label className="text-sm font-medium text-foreground block mb-1.5">To</label>
             <select
               value={toAccount}
               onChange={(e) => setToAccount(e.target.value)}
-              className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#E31837] focus:border-[#E31837]"
+              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground"
             >
-              <option value="savings">{accountData.savings.name} ({accountData.savings.number})</option>
-              <option value="checking">{accountData.checking.name} ({accountData.checking.number})</option>
+              <option value="savings">{accountData.savings.name} ****{accountData.savings.number}</option>
+              <option value="checking">{accountData.checking.name} ****{accountData.checking.number}</option>
             </select>
           </div>
 
           <div>
-            <label className="text-sm font-medium text-gray-900 block mb-1.5">Amount</label>
+            <label className="text-sm font-medium text-foreground block mb-1.5">Amount</label>
             <div className="relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">$</span>
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">$</span>
               <Input
                 type="number"
                 step="0.01"
                 min="0.01"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="pl-7 border-gray-300 focus:border-[#E31837] focus:ring-[#E31837]"
+                className="pl-7"
                 placeholder="0.00"
                 required
               />
@@ -89,32 +89,32 @@ const Transfers = () => {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-gray-900 block mb-1.5">Memo (optional)</label>
-            <Input value={memo} onChange={(e) => setMemo(e.target.value)} placeholder="Add a note" className="border-gray-300 focus:border-[#E31837] focus:ring-[#E31837]" />
+            <label className="text-sm font-medium text-foreground block mb-1.5">Memo (optional)</label>
+            <Input value={memo} onChange={(e) => setMemo(e.target.value)} placeholder="Add a note" />
           </div>
 
-          <Button type="submit" className="w-full bg-[#E31837] text-white hover:bg-[#C4162F] font-semibold">
+          <Button type="submit" className="w-full bg-[#E31837] hover:bg-[#c4162f] text-white">
             Submit Transfer
           </Button>
         </form>
 
         {/* Transfer History */}
-        <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
-          <div className="px-5 py-4 border-b border-gray-200">
-            <h2 className="font-semibold text-gray-900">Recent Transfers</h2>
+        <div className="bg-card border border-border rounded-xl shadow-card">
+          <div className="px-5 py-4 border-b border-border">
+            <h2 className="font-semibold text-foreground">Recent Transfers</h2>
           </div>
-          <div className="divide-y divide-gray-200">
+          <div className="divide-y divide-border">
             {[
               { date: "02/15/2026", desc: "Savings → Checking", amount: 5000 },
               { date: "02/01/2026", desc: "Checking → Savings", amount: 10000 },
               { date: "01/20/2026", desc: "Checking → Savings", amount: 25000 },
             ].map((t, i) => (
-              <div key={i} className="flex items-center justify-between px-5 py-3.5 hover:bg-gray-50 transition-colors">
+              <div key={i} className="flex items-center justify-between px-5 py-3.5">
                 <div>
-                  <p className="text-sm font-medium text-gray-900">{t.desc}</p>
-                  <p className="text-xs text-gray-500">{t.date}</p>
+                  <p className="text-sm font-medium text-foreground">{t.desc}</p>
+                  <p className="text-xs text-muted-foreground">{t.date}</p>
                 </div>
-                <span className="text-sm font-semibold text-gray-900">{formatCurrency(t.amount)}</span>
+                <span className="text-sm font-semibold text-foreground">{formatCurrency(t.amount)}</span>
               </div>
             ))}
           </div>

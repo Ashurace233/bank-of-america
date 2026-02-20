@@ -1,20 +1,28 @@
 export const accountData = {
   checking: {
     name: "Advantage Plus Banking",
-    number: "****4892",
+    number: "7284",
     balance: 4875230.45,
     available: 4875230.45,
     type: "checking" as const,
   },
   savings: {
     name: "Advantage Savings",
-    number: "****7361",
+    number: "7297",
     balance: 124769.55,
     available: 124769.55,
     type: "savings" as const,
   },
   totalBalance: 5000000.0,
 };
+
+/** Bank of America style account list for dashboard */
+export const boaAccounts = [
+  { name: "Checking Account 7284", number: "7284", balance: -34.94, type: "checking" as const },
+  { name: "Jhoshys Account", number: "1234", balance: 348.93, type: "checking" as const },
+  { name: "Kikis account", number: "5678", balance: 0.19, type: "checking" as const },
+  { name: "Savings Account 7297", number: "7297", balance: 30043.76, type: "savings" as const },
+];
 
 export const transactions = [
   { id: 1, date: "02/18/2026", description: "Direct Deposit - Employer", amount: 12500.0, type: "credit" as const, category: "Income" },

@@ -20,10 +20,10 @@ const Investments = () => {
   return (
     <DashboardLayout>
       <div className="max-w-4xl mx-auto space-y-6">
-        <h1 className="text-2xl font-semibold text-gray-900">Investments</h1>
+        <h1 className="text-2xl font-semibold text-foreground">Investments</h1>
 
         {/* Portfolio summary */}
-        <div className="bg-[#E31837] rounded-lg p-6 text-white shadow-md">
+        <div className="bg-[#E31837] rounded-xl p-6 text-white shadow-lg">
           <p className="text-sm text-white/80 mb-1">Portfolio Value</p>
           <p className="text-3xl font-bold mb-2">{formatCurrency(portfolio.totalValue)}</p>
           <div className="flex items-center gap-2 text-sm">
@@ -37,30 +37,30 @@ const Investments = () => {
         {/* Allocation */}
         <div className="grid md:grid-cols-3 gap-4">
           {[
-            { label: "Stocks", pct: "69%", color: "bg-[#E31837]" },
-            { label: "Bonds", pct: "5%", color: "bg-orange-500" },
-            { label: "Cash & Equivalents", pct: "26%", color: "bg-green-600" },
+            { label: "Stocks", pct: "69%", color: "bg-[#012169]" },
+            { label: "Bonds", pct: "5%", color: "bg-[#E31837]" },
+            { label: "Cash & Equivalents", pct: "26%", color: "bg-success" },
           ].map(({ label, pct, color }) => (
-            <div key={label} className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm flex items-center gap-3">
+            <div key={label} className="bg-card border border-border rounded-lg p-4 shadow-card flex items-center gap-3">
               <div className={`h-3 w-3 rounded-full ${color}`} />
               <div>
-                <p className="text-sm font-medium text-gray-900">{label}</p>
-                <p className="text-lg font-semibold text-gray-900">{pct}</p>
+                <p className="text-sm font-medium text-foreground">{label}</p>
+                <p className="text-lg font-semibold text-foreground">{pct}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Holdings */}
-        <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
-          <div className="flex items-center gap-2 px-5 py-4 border-b border-gray-200">
-            <PieChart className="h-4 w-4 text-gray-500" />
-            <h2 className="font-semibold text-gray-900">Holdings</h2>
+        <div className="bg-card border border-border rounded-xl shadow-card">
+          <div className="flex items-center gap-2 px-5 py-4 border-b border-border">
+            <PieChart className="h-4 w-4 text-muted-foreground" />
+            <h2 className="font-semibold text-foreground">Holdings</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="text-left text-xs text-gray-500 border-b border-gray-200">
+                <tr className="text-left text-xs text-muted-foreground border-b border-border">
                   <th className="px-5 py-3 font-medium">Name</th>
                   <th className="px-5 py-3 font-medium">Symbol</th>
                   <th className="px-5 py-3 font-medium text-right">Shares</th>
@@ -69,20 +69,20 @@ const Investments = () => {
                   <th className="px-5 py-3 font-medium text-right">Value</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-border">
                 {portfolio.holdings.map((h) => (
-                  <tr key={h.symbol} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-5 py-3.5 font-medium text-gray-900">{h.name}</td>
-                    <td className="px-5 py-3.5 text-gray-600">{h.symbol}</td>
-                    <td className="px-5 py-3.5 text-right text-gray-900">{h.shares.toLocaleString()}</td>
-                    <td className="px-5 py-3.5 text-right text-gray-900">{formatCurrency(h.price)}</td>
+                  <tr key={h.symbol} className="hover:bg-muted/50 transition-colors">
+                    <td className="px-5 py-3.5 font-medium text-foreground">{h.name}</td>
+                    <td className="px-5 py-3.5 text-muted-foreground">{h.symbol}</td>
+                    <td className="px-5 py-3.5 text-right text-foreground">{h.shares.toLocaleString()}</td>
+                    <td className="px-5 py-3.5 text-right text-foreground">{formatCurrency(h.price)}</td>
                     <td className={`px-5 py-3.5 text-right font-medium flex items-center justify-end gap-1 ${
-                      h.change > 0 ? "text-green-600" : h.change < 0 ? "text-red-600" : "text-gray-500"
+                      h.change > 0 ? "text-success" : h.change < 0 ? "text-destructive" : "text-muted-foreground"
                     }`}>
                       {h.change > 0 ? <TrendingUp className="h-3 w-3" /> : h.change < 0 ? <TrendingDown className="h-3 w-3" /> : null}
                       {h.change > 0 ? "+" : ""}{h.change}%
                     </td>
-                    <td className="px-5 py-3.5 text-right font-semibold text-gray-900">{formatCurrency(h.value)}</td>
+                    <td className="px-5 py-3.5 text-right font-semibold text-foreground">{formatCurrency(h.value)}</td>
                   </tr>
                 ))}
               </tbody>

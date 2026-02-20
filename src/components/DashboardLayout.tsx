@@ -2,14 +2,17 @@ import { ReactNode } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { Navigate, useNavigate, useLocation, Link } from "react-router-dom";
 import {
-  Shield, Home, ArrowLeftRight, Receipt, Settings, LogOut,
-  CreditCard, PiggyBank, Bell, Search, Menu, X, ChevronDown
+  Home, ArrowLeftRight, Receipt, Settings, LogOut,
+  CreditCard, PiggyBank, Search, Menu, X, FileText, FileDown
 } from "lucide-react";
 import { useState } from "react";
 
+/* Bank of America logo */
+const BOA_LOGO_URL = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Bank_of_America_logo.png";
+
 const navItems = [
   { label: "Accounts", icon: Home, path: "/dashboard" },
-  { label: "Transfers", icon: ArrowLeftRight, path: "/transfers" },
+  { label: "Pay & Transfer", icon: ArrowLeftRight, path: "/transfers" },
   { label: "Bill Pay", icon: Receipt, path: "/bill-pay" },
   { label: "Credit Cards", icon: CreditCard, path: "/credit-cards" },
   { label: "Investments", icon: PiggyBank, path: "/investments" },
@@ -31,116 +34,180 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {/* Top header */}
-      <header className="bg-white border-b border-gray-200 px-4 md:px-6 py-3">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <h1 className="text-2xl font-bold text-[#E31837] tracking-tight">Bank of America</h1>
-            <span className="text-sm text-gray-700 font-medium hidden md:inline">Online Banking</span>
+      {/* Top header - white, Bank of America style */}
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          {/* Top row: Menu, Inbox, Products, Log Out, Logo */}
+          <div className="flex items-center justify-between py-3">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837] md:hidden"
+            >
+              <Menu className="h-6 w-6" />
+              <span className="text-[10px]">Menu</span>
+            </button>
+            <div className="hidden md:flex items-center gap-6">
+              <div className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837] cursor-pointer">
+                <span className="text-xl">✉</span>
+                <span className="text-xs">Inbox</span>
+              </div>
+              <div className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837] cursor-pointer">
+                <span className="text-xl">🛒</span>
+                <span className="text-xs">Products</span>
+              </div>
+              <button
+                onClick={handleLogout}
+                className="flex flex-col items-center gap-0.5 text-gray-700 hover:text-[#E31837]"
+              >
+                <LogOut className="h-5 w-5" />
+                <span className="text-xs">Log Out</span>
+              </button>
+            </div>
+            <div className="flex-1 flex justify-center md:justify-end">
+              <Link to="/dashboard" className="flex items-center gap-2">
+                <div className="relative">
+                  <img
+                    src={BOA_LOGO_URL}
+                    alt="Bank of America"
+                    className="h-8 object-contain"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = "/boa-logo.svg";
+                    }}
+                  />
+                  <span className="absolute -top-1 -right-1 bg-[#E31837] text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
+                    3
+                  </span>
+                </div>
+              </Link>
+            </div>
           </div>
-          <div className="hidden md:flex items-center gap-4">
-            <div className="relative">
+
+          {/* Tabs: Accounts | Dashboard */}
+          <div className="flex border-b border-gray-200 -mb-px">
+            <Link
+              to="/dashboard"
+              className={`px-6 py-3 text-sm font-semibold border-b-2 transition-colors ${
+                location.pathname === "/dashboard"
+                  ? "border-[#E31837] text-[#E31837]"
+                  : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              Accounts
+            </Link>
+            <Link
+              to="/dashboard"
+              className={`px-6 py-3 text-sm font-semibold border-b-2 transition-colors ${
+                location.pathname === "/dashboard"
+                  ? "border-transparent text-gray-500"
+                  : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              Dashboard
+            </Link>
+          </div>
+
+          {/* Search bar */}
+          <div className="pb-3">
+            <div className="relative max-w-xl">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
               <input
-                placeholder="Search..."
-                className="bg-gray-50 border border-gray-300 text-gray-900 placeholder:text-gray-400 rounded-md pl-9 pr-4 py-1.5 text-sm w-64 focus:outline-none focus:ring-1 focus:ring-[#E31837] focus:border-[#E31837]"
+                type="text"
+                placeholder="How can we help?"
+                className="w-full pl-10 pr-12 py-2.5 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#E31837]/30 focus:border-[#E31837]"
               />
-            </div>
-            <button className="relative text-gray-600 hover:text-gray-900">
-              <Bell className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 bg-[#E31837] text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center font-semibold">3</span>
-            </button>
-            <div className="flex items-center gap-2 text-gray-700 text-sm">
-              <div className="h-8 w-8 rounded-full bg-[#E31837] flex items-center justify-center font-semibold text-white">
-                {user?.name.charAt(0)}
+              <div className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-[#E31837] flex items-center justify-center cursor-pointer text-white">
+                <Search className="h-4 w-4" />
               </div>
-              <span className="hidden lg:inline font-medium">{user?.name}</span>
-              <ChevronDown className="h-3.5 w-3.5 text-gray-500" />
             </div>
           </div>
-          <button className="md:hidden text-gray-700" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
         </div>
-      </header>
 
-      {/* Navigation bar */}
-      <nav className="bg-[#E31837] px-4 md:px-6">
-        <div className="max-w-7xl mx-auto hidden md:flex items-center gap-1">
-          {navItems.map(({ label, icon: Icon, path }) => (
-            <Link
-              key={path}
-              to={path}
-              className={`flex items-center gap-2 px-4 py-3 text-sm font-medium transition-colors ${
-                location.pathname === path
-                  ? "text-white border-b-2 border-white bg-[#C4162F]"
-                  : "text-white/90 hover:text-white hover:bg-[#C4162F]"
-              }`}
-            >
-              <Icon className="h-4 w-4" />
-              {label}
-            </Link>
-          ))}
-          <div className="ml-auto">
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-gray-200 bg-white py-2 animate-fade-in">
+            {navItems.map(({ label, icon: Icon, path }) => (
+              <Link
+                key={path}
+                to={path}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`flex items-center gap-3 px-6 py-3 text-sm ${
+                  location.pathname === path ? "text-[#E31837] font-semibold bg-red-50" : "text-gray-700"
+                }`}
+              >
+                <Icon className="h-4 w-4" />
+                {label}
+              </Link>
+            ))}
             <button
-              onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-3 text-sm text-white/90 hover:text-white hover:bg-[#C4162F] transition-colors"
+              onClick={() => { handleLogout(); setMobileMenuOpen(false); }}
+              className="flex items-center gap-3 px-6 py-3 text-sm text-gray-700 w-full border-t border-gray-200"
             >
               <LogOut className="h-4 w-4" />
-              Sign Out
+              Log Out
             </button>
           </div>
-        </div>
-      </nav>
-
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 animate-slide-in">
-          {navItems.map(({ label, icon: Icon, path }) => (
-            <Link
-              key={path}
-              to={path}
-              onClick={() => setMobileMenuOpen(false)}
-              className={`flex items-center gap-3 px-6 py-3 text-sm ${
-                location.pathname === path
-                  ? "text-[#E31837] bg-gray-50 font-medium"
-                  : "text-gray-700 hover:bg-gray-50"
-              }`}
-            >
-              <Icon className="h-4 w-4" />
-              {label}
-            </Link>
-          ))}
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-3 px-6 py-3 text-sm text-gray-700 hover:bg-gray-50 w-full border-t border-gray-200"
-          >
-            <LogOut className="h-4 w-4" />
-            Sign Out
-          </button>
-        </div>
-      )}
+        )}
+      </header>
 
       {/* Main content */}
-      <main className="flex-1 px-4 md:px-6 py-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto animate-fade-in">
+      <main className="flex-1 px-4 sm:px-6 py-6">
+        <div className="max-w-7xl mx-auto">
           {children}
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 px-4 md:px-6 py-6 mt-auto">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs text-gray-600">
-          <div className="flex flex-wrap gap-4">
-            <a href="#" className="hover:text-[#E31837]">Privacy</a>
-            <a href="#" className="hover:text-[#E31837]">Security</a>
-            <a href="#" className="hover:text-[#E31837]">Your Privacy Choices</a>
+      {/* Bottom nav - mobile (Bank of America style) */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 py-2 px-2 flex items-center justify-around z-50">
+        <Link
+          to="/dashboard"
+          className={`flex flex-col items-center gap-1 py-2 ${
+            location.pathname === "/dashboard" ? "text-[#012169] font-semibold" : "text-gray-500"
+          }`}
+        >
+          <span className="text-lg">$</span>
+          <span className="text-[10px]">Accounts</span>
+        </Link>
+        <Link
+          to="/transfers"
+          className={`flex flex-col items-center gap-1 py-2 ${
+            location.pathname === "/transfers" ? "text-[#012169] font-semibold" : "text-gray-500"
+          }`}
+        >
+          <ArrowLeftRight className="h-5 w-5" />
+          <span className="text-[10px]">Pay & Transfer</span>
+        </Link>
+        <Link
+          to="/bill-pay"
+          className={`flex flex-col items-center gap-1 py-2 ${
+            location.pathname === "/bill-pay" ? "text-[#012169] font-semibold" : "text-gray-500"
+          }`}
+        >
+          <FileDown className="h-5 w-5" />
+          <span className="text-[10px]">Deposit Checks</span>
+        </Link>
+        <Link
+          to="/investments"
+          className={`flex flex-col items-center gap-1 py-2 ${
+            location.pathname === "/investments" ? "text-[#012169] font-semibold" : "text-gray-500"
+          }`}
+        >
+          <PiggyBank className="h-5 w-5" />
+          <span className="text-[10px]">Invest</span>
+        </Link>
+      </nav>
+
+      {/* Add padding for mobile bottom nav */}
+      <div className="h-20 md:hidden" />
+
+      {/* Footer - desktop */}
+      <footer className="hidden md:block bg-white border-t border-gray-200 py-4 px-6">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-xs text-gray-600">
+          <div className="flex gap-4">
+            <span className="cursor-pointer hover:text-[#E31837]">Privacy</span>
+            <span className="cursor-pointer hover:text-[#E31837]">Security Center</span>
+            <span className="cursor-pointer hover:text-[#E31837]">Terms</span>
           </div>
-          <div className="text-gray-600">
-            <span>Bank of America, N.A. Member FDIC. </span>
-            <a href="#" className="hover:text-[#E31837]">Equal Housing Lender</a>
-            <span> © 2025 Bank of America Corporation.</span>
-          </div>
+          <span>© 2026 Bank of America Corporation. Member FDIC. Equal Housing Lender.</span>
         </div>
       </footer>
     </div>

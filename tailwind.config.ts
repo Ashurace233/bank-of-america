@@ -14,6 +14,10 @@ export default {
     },
     extend: {
       colors: {
+        boa: {
+          blue: "#012169",
+          red: "#E31837",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
