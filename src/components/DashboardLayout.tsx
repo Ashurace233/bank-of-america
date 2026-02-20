@@ -88,7 +88,7 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
               to="/dashboard"
               className={`px-6 py-3 text-sm font-semibold border-b-2 transition-colors ${
                 location.pathname === "/dashboard"
-                  ? "border-transparent text-gray-500"
+                  ? "border-[#E31837] text-[#E31837]"
                   : "border-transparent text-gray-500 hover:text-gray-700"
               }`}
             >
