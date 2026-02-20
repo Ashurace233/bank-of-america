@@ -7,8 +7,8 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-/* Bank of America logo */
-const BOA_LOGO_URL = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Bank_of_America_logo.png";
+/** Inside/horizontal logo for the site */
+const LOGO_URL = "/logo.png";
 
 const navItems = [
   { label: "Accounts", icon: Home, path: "/dashboard" },
@@ -25,11 +25,11 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  if (!isAuthenticated) return <Navigate to="/" replace />;
+  if (!isAuthenticated) return <Navigate to="/login" replace />;
 
   const handleLogout = () => {
     logout();
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -67,12 +67,9 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
               <Link to="/dashboard" className="flex items-center gap-2">
                 <div className="relative">
                   <img
-                    src={BOA_LOGO_URL}
+                    src={LOGO_URL}
                     alt="Bank of America"
                     className="h-8 object-contain"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = "/boa-logo.svg";
-                    }}
                   />
                   <span className="absolute -top-1 -right-1 bg-[#E31837] text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
                     3

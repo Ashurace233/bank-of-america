@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { HelpCircle, Smartphone, CreditCard, Landmark, Send } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Smartphone, CreditCard, Landmark, Send, Loader2 } from "lucide-react";
 
-/* Bank of America logo - use external URL or /boa-logo.svg from public folder */
-const BOA_LOGO_URL = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Bank_of_America_logo.png";
+/** Inside/horizontal logo for the site */
+const LOGO_URL = "/logo.png";
 
 const Login = () => {
   const [userId, setUserId] = useState("");
@@ -15,13 +16,16 @@ const Login = () => {
   const [error, setError] = useState("");
   const [saveUserId, setSaveUserId] = useState(false);
   const [showUserIdHelp, setShowUserIdHelp] = useState(false);
-  const { login } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
+  const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+
+  if (isAuthenticated) return <Navigate to="/dashboard" replace />;
 
   const userIdLength = userId.trim().length;
   const canEnablePassword = userIdLength >= 6;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!userId.trim()) {
       setError("User ID Must be at least 6 characters long");
@@ -35,10 +39,14 @@ const Login = () => {
       setError("Please enter your password");
       return;
     }
+    setIsLoading(true);
+    setError("");
     const success = login(userId, password);
     if (success) {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       navigate("/dashboard");
     } else {
+      setIsLoading(false);
       setError("Invalid User ID or Password. Please try again.");
     }
   };
@@ -50,17 +58,9 @@ const Login = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <a href="/" className="flex items-center gap-2">
-                <img
-                  src={BOA_LOGO_URL}
-                  alt="Bank of America"
-                  className="h-8 object-contain"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "/boa-logo.svg";
-                    (e.target as HTMLImageElement).alt = "Bank of America";
-                  }}
-                />
-              </a>
+              <Link to="/" className="flex items-center gap-2">
+                <img src={LOGO_URL} alt="Bank of America" className="h-8 object-contain" />
+              </Link>
             </div>
             <div className="flex items-center gap-4 text-sm">
               <a href="#" className="text-[#012169] hover:underline font-medium">Locations</a>
@@ -100,7 +100,8 @@ const Login = () => {
                       setUserId(e.target.value);
                       setError("");
                     }}
-                    className="w-full h-10 bg-white text-gray-900 border-0"
+                    disabled={isLoading}
+                    className="w-full h-10 bg-white text-gray-900 border-0 disabled:opacity-70"
                     placeholder=""
                     autoFocus
                   />
@@ -135,8 +136,8 @@ const Login = () => {
                       setPassword(e.target.value);
                       setError("");
                     }}
-                    disabled={!canEnablePassword}
-                    className={`w-full h-10 bg-white text-gray-900 border-0 ${!canEnablePassword ? "opacity-60 cursor-not-allowed" : ""}`}
+                    disabled={!canEnablePassword || isLoading}
+                    className={`w-full h-10 bg-white text-gray-900 border-0 ${!canEnablePassword || isLoading ? "opacity-60 cursor-not-allowed" : ""}`}
                     placeholder={!canEnablePassword ? "Enter at least 6 characters of Online ID first" : ""}
                   />
                 </div>
@@ -145,9 +146,17 @@ const Login = () => {
                 )}
                 <Button
                   type="submit"
-                  className="w-full bg-[#012169] hover:bg-[#011a52] text-white font-semibold h-10"
+                  disabled={isLoading}
+                  className="w-full bg-[#012169] hover:bg-[#011a52] text-white font-semibold h-10 disabled:opacity-80 disabled:cursor-not-allowed"
                 >
-                  Sign In
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Signing in...
+                    </>
+                  ) : (
+                    "Sign In"
+                  )}
                 </Button>
               </form>
               <div className="mt-3 flex flex-wrap gap-2 text-sm">
