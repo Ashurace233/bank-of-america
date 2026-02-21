@@ -29,18 +29,18 @@ export const dashboardSummary = {
 };
 
 export const transactions = [
-  { id: 1, date: "02/18/2026", description: "Direct Deposit - Employer", amount: 12500.0, type: "credit" as const, category: "Income" },
-  { id: 2, date: "02/17/2026", description: "Amazon.com", amount: -234.56, type: "debit" as const, category: "Shopping" },
-  { id: 3, date: "02/16/2026", description: "Whole Foods Market", amount: -187.32, type: "debit" as const, category: "Groceries" },
-  { id: 4, date: "02/15/2026", description: "Transfer from Savings", amount: 5000.0, type: "credit" as const, category: "Transfer" },
-  { id: 5, date: "02/14/2026", description: "Netflix Subscription", amount: -22.99, type: "debit" as const, category: "Entertainment" },
-  { id: 6, date: "02/13/2026", description: "Shell Gas Station", amount: -65.40, type: "debit" as const, category: "Auto" },
-  { id: 7, date: "02/12/2026", description: "Wire Transfer Received", amount: 50000.0, type: "credit" as const, category: "Transfer" },
-  { id: 8, date: "02/11/2026", description: "Electric Bill - ConEd", amount: -245.80, type: "debit" as const, category: "Utilities" },
-  { id: 9, date: "02/10/2026", description: "Starbucks", amount: -8.75, type: "debit" as const, category: "Dining" },
-  { id: 10, date: "02/09/2026", description: "Investment Dividend", amount: 3200.0, type: "credit" as const, category: "Income" },
-  { id: 11, date: "02/08/2026", description: "AT&T Wireless", amount: -95.00, type: "debit" as const, category: "Utilities" },
-  { id: 12, date: "02/07/2026", description: "Uber Rides", amount: -42.30, type: "debit" as const, category: "Transportation" },
+  { id: 1, date: "02/06/2018", description: "Direct Deposit - Employer", amount: 12500.0, type: "credit" as const, category: "Income" },
+  { id: 2, date: "01/05/2018", description: "Amazon.com", amount: -234.56, type: "debit" as const, category: "Shopping" },
+  { id: 3, date: "21/04/2018", description: "Whole Foods Market", amount: -187.32, type: "debit" as const, category: "Groceries" },
+  { id: 4, date: "12/04/2018", description: "Transfer from Savings", amount: 5000.0, type: "credit" as const, category: "Transfer" },
+  { id: 5, date: "08/03/2018", description: "Netflix Subscription", amount: -22.99, type: "debit" as const, category: "Entertainment" },
+  { id: 6, date: "05/03/2018", description: "Shell Gas Station", amount: -65.40, type: "debit" as const, category: "Auto" },
+  { id: 7, date: "02/01/2018", description: "Wire Transfer Received", amount: 50000.0, type: "credit" as const, category: "Transfer" },
+  { id: 8, date: "30/12/2017", description: "Electric Bill - ConEd", amount: -245.80, type: "debit" as const, category: "Utilities" },
+  { id: 9, date: "26/11/2017", description: "Starbucks", amount: -8.75, type: "debit" as const, category: "Dining" },
+  { id: 10, date: "25/11/2017", description: "Investment Dividend", amount: 3200.0, type: "credit" as const, category: "Income" },
+  { id: 11, date: "15/10/2017", description: "AT&T Wireless", amount: -95.00, type: "debit" as const, category: "Utilities" },
+  { id: 12, date: "02/10/2017", description: "Uber Rides", amount: -42.30, type: "debit" as const, category: "Transportation" },
 ];
 
 export const billPayees = [
