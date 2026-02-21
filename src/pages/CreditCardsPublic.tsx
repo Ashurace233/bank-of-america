@@ -32,17 +32,17 @@ const CreditCardsPublic = () => {
               {
                 name: "Bank of America® Travel Rewards",
                 rewards: "Unlimited 1.5 points per $1 spent on all purchases",
-                image: "[Travel Rewards Card Image]",
+                image: "/travel-card.png",
               },
               {
                 name: "BankAmericard® credit card",
                 rewards: "0% intro APR for 18 billing cycles",
-                image: "[BankAmericard Image]",
+                image: "/card-standard.png",
               },
             ].map((card) => (
               <div key={card.name} className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
                 <div className="w-full h-48 bg-gray-100 rounded-lg mb-4 flex items-center justify-center text-gray-400 text-sm overflow-hidden">
-                  {card.image.startsWith("/") ? (
+                  {card.image.startsWith("/") && !card.image.includes("[") ? (
                     <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
                   ) : (
                     card.image
