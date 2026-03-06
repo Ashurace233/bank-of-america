@@ -3,6 +3,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+// Basename for GitHub Pages (must match Vite base). Use BASE_URL from build.
+const basename = (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "") || "/";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Homepage from "./pages/Homepage";
 import Personal from "./pages/Personal";
@@ -39,7 +42,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <AuthProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={basename}>
           <Routes>
             <Route path="/" element={<Personal />} />
             <Route path="/homepage" element={<Homepage />} />
