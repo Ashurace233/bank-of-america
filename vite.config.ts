@@ -5,8 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // GitHub Pages serves from /repo-name/ — set base to your repo name (no trailing slash in repo)
-base: mode === "production" ? "/bank-of-america-main/" : "/",
+  base: mode === "production" ? "./" : "/",
   server: {
     host: "::",
     port: 8080,

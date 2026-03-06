@@ -4,8 +4,16 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-// Basename for GitHub Pages (must match Vite base). Use BASE_URL from build.
-const basename = (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "") || "/";
+// Basename for GitHub Pages: app is served at /repo-name/ so router must know the base path
+const getBasename = () => {
+  const path = window.location.pathname;
+  const segments = path.split("/").filter(Boolean);
+  // If we're on a subpath (e.g. /bank-of-america-main/), use first segment as basename
+  if (segments.length > 0 && !path.startsWith("/localhost")) {
+    return "/" + segments[0];
+  }
+  return "/";
+};
 import { AuthProvider } from "@/contexts/AuthContext";
 import Homepage from "./pages/Homepage";
 import Personal from "./pages/Personal";
@@ -42,7 +50,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <AuthProvider>
-        <BrowserRouter basename={basename}>
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<Personal />} />
             <Route path="/homepage" element={<Homepage />} />
